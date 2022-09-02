@@ -32,7 +32,7 @@ class SQLite:
         return result
 
     def insert(self, _id: str) -> bool:
-        self.cursor.execute('insert into data (id, times) values ("%s", 0)' % _id)
+        self.cursor.execute('insert into data (id, times) values ("%s", 1)' % _id)
         return True
 
     def update(self, _id: str, times: int) -> bool:
