@@ -8,7 +8,7 @@
 
 import os
 import sqlite3
-from urllib.request import urlopen
+from src.utils.t_download import download
 
 
 class SQLite:
@@ -54,7 +54,5 @@ class SQLite:
 if __name__ != '__main__':
     if not os.path.exists('./src/db/data.sqlite'):
         print('database file not exists, start downloading...')
-        resp = urlopen('https://pac.rtst.tech/static_file_hosting/static/counter/data.sqlite').read()
-        with open('./src/db/data.sqlite', 'wb') as fp:
-            fp.write(resp)
+        download('https://pac.rtst.tech/static_file_hosting/static/counter/data.sqlite')
         print('Done.')
