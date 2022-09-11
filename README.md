@@ -4,7 +4,7 @@
 
 # 预览
 
-![preview](https://counter.rtst.tech/test)
+![preview](https://counter-main.run.goorm.io/test)
 
 # 新特性
 
