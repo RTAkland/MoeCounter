@@ -1,1 +1,1 @@
-uvicorn src:create_app --factory
+uvicorn src:create_app --factory --host=0.0.0.0
