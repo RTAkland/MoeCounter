@@ -31,6 +31,10 @@ $ python3 main.py  # 两条命令等价
 
 * 访问`127.0.0.1:8000/<any name you want>`
 
+## 参数
+* `length`
+* `theme`
+
 # 单元测试
 
 * 没有单元测试(没写)
