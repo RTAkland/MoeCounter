@@ -11,7 +11,9 @@
 * 使用了异步Web框架`FastAPI`来提高效率 ***注:数据库部分使用了同步***
 * 可以自定义显示图片的数量(长度)
 * 支持API接口以便自行开发
-* 支持MySQL数据库链接  ***表结构sql文件在`src/db/schema/`文件夹内可以找到***
+* 支持MySQL数据库链接
+> data.sql https://pac.rtst.tech/schema/counter/data.sql  
+> image.sql  https://pac.rtst.tech/schema/counter/image.sql
 
 # 失去的特性
 
