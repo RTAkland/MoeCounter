@@ -7,19 +7,19 @@
 
 
 from src.api import api
-from src.db import SQLite
+from src.db import Database
 from fastapi.responses import FileResponse
 
 
 @api.get('/query/{name}')
 async def query(name: str):
-    times = SQLite().query(name)[1]
+    times = Database().query(name)[1]
     return {name: times}
 
 
 @api.get('/query-all/')
 async def query_all(limit: int = 30):
-    data = SQLite().query_all()[:limit]
+    data = Database().query_all()[:limit]
     result = {}
     for i in data:
         result[i[0]] = i[1]
@@ -35,6 +35,6 @@ async def export():
 async def query_theme(name: str):
     themes = []
     for i in range(10):
-        data = SQLite().query_image(name + '/' + str(i))[0]
+        data = Database().query_image(name + '/' + str(i))[0]
         themes.append(data)
     return themes
