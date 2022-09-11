@@ -4,7 +4,7 @@
 
 # 预览
 
-![preview](https://counter-main.run.goorm.io/test)
+<img src="https://counter-main.run.goorm.io/test" alt="preview">
 
 # 新特性
 
