@@ -16,6 +16,8 @@ template = Jinja2Templates('./src/templates')
 
 @main.get('/{name}')
 async def index(req: Request, name: str, length: int = 7, theme: str = 'lewd'):
+    if length > 10:
+        return {'code': -200, 'msg': 'Length Error'}
     response = await resp(name, length, theme)
 
     return template.TemplateResponse('index.html', context={'request': req,
