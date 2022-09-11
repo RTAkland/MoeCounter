@@ -4,18 +4,21 @@
 
 # 预览
 
+![preview](https://counter.rtst.tech)
 
 # 新特性
 
 * 使用了异步Web框架`FastAPI`来提高效率 ***注:数据库部分使用了同步***
 * 可以自定义显示图片的数量(长度)
 * 支持API接口以便自行开发
+* 支持MySQL数据库链接  ***表结构sql文件在`src/db/schema/`文件夹内可以找到***
 
 # 失去的特性
 
-* 只支持`SQLite`数据库
+* 不支持MongoDB
 
 # 安装&运行
+
 ```bash
 $ pip3 install -r requirements.txt
 $ uvicorn src:create_app --factory  or 
@@ -23,9 +26,11 @@ $ python3 main.py  # 两条命令等价
 ```
 
 # 使用
+
 * 访问`127.0.0.1:8000/<any name you want>`
 
 # 单元测试
+
 * 没有单元测试(没写)
 
 # 开源
