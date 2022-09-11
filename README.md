@@ -4,7 +4,7 @@
 
 # 预览
 
-![preview](https://counter.rtst.tech)
+![preview](https://counter.rtst.tech/test)
 
 # 新特性
 
