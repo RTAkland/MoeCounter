@@ -40,7 +40,10 @@ class ThreadedDownload(threading.Thread):
 def download(url: str, threads: int = 4) -> None:
     filename = url.split('/')[-1]
     open('./src/db/data.sqlite', 'wb').close()  # create an empty file
-    filesize = int(requests.head(url).headers['Content-Length'])
+    head = requests.head(url)
+    if head.status_code == 301:
+        head = requests.head(head.headers['Location'])
+    filesize = int(head.headers['Content-Length'])
     offset = filesize // threads
     start = 0
     for i in range(threads):
