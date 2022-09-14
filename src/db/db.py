@@ -7,12 +7,10 @@
 
 
 import os
-import sqlite3
-from src.config import Config
-from src.utils.t_download import download
+from src.db import operator
 
 
-class Database:
+class DatabaseSQL:
     def __init__(self):
         self.conn = None
         self.cursor = None
@@ -51,14 +49,14 @@ class Database:
         return result
 
 
-class SQLite(Database):
+class SQLite(DatabaseSQL):
     def __init__(self):
         super().__init__()
-        self.conn = sqlite3.connect('./src/db/data.sqlite')
+        self.conn = operator.connect('./src/db/data.sqlite')
         self.cursor = self.conn.cursor()
 
 
-class MySQL(Database):
+class MySQL(DatabaseSQL):
     def __init__(self):
         super().__init__()
         user = os.getenv('m_user')
@@ -66,23 +64,10 @@ class MySQL(Database):
         host = os.getenv('m_host')
         port = int(os.getenv('m_port'))
         db = os.getenv('m_database')
-        self.conn = pymysql.connect(host=host,
-                                    user=user,
-                                    password=pwd,
-                                    port=port,
-                                    database=db
-                                    )
+        self.conn = operator.connect(host=host,
+                                     user=user,
+                                     password=pwd,
+                                     port=port,
+                                     database=db
+                                     )
         self.cursor = self.conn.cursor()
-
-
-if __name__ != '__main__':
-    if Config.database == 'sqlite':
-        print('Using SQLite Database')
-        if not os.path.exists('./src/db/data.sqlite'):
-            print('database file not exists, start downloading...')
-            download('https://pac.rtst.tech/static_file_hosting/static/counter/data.sqlite')
-            print('Done.')
-    else:
-        print('Using MySQL Database')
-        if not os.getenv('m_user'):
-            import pymysql
