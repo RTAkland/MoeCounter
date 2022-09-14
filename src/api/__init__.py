@@ -3,7 +3,7 @@
 # @Author: markushammered@gmail.com
 # @Development Tool: PyCharm
 # @Create Time: 2022/9/2
-# @File Name: __init__.py.py
+# @File Name: __init__.py
 
 from fastapi import APIRouter
 
