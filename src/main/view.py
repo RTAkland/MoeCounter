@@ -9,9 +9,21 @@
 from src.main import main
 from src.utils import resp
 from fastapi import Request
+from fastapi.responses import RedirectResponse
+from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 
 template = Jinja2Templates('./src/templates')
+
+
+@main.get('/favicon.ico')
+async def favicon():
+    return FileResponse('./src/static/favicon.ico')
+
+
+@main.get('/')
+async def redirect_index():
+    return RedirectResponse('/_redirect')
 
 
 @main.get('/{name}')
