@@ -1,6 +1,6 @@
-fastapi
-uvicorn
+fastapi~=0.82.0
+uvicorn~=0.18.3
 jinja2
 aiofiles
-requests
-pymysql
+requests~=2.28.1
+pymysql~=1.0.2
