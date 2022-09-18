@@ -14,6 +14,7 @@ class DatabaseSQL:
     def __init__(self):
         self.conn = None
         self.cursor = None
+        self.target = None
 
     def __del__(self):
         self.conn.commit()
@@ -30,7 +31,7 @@ class DatabaseSQL:
         return result
 
     def insert(self, _id: str) -> bool:
-        self.cursor.execute('insert into data (id, times) values ("%s", 1);' % _id)
+        self.cursor.execute('insert into data (id, times) values (%s, 1);' % self.target % _id)
         return True
 
     def update(self, _id: str, times: int) -> bool:
@@ -43,8 +44,8 @@ class DatabaseSQL:
         result = self.cursor.fetchall()
         return result
 
-    def query_image(self, _id: str) -> list:
-        self.cursor.execute('select * from image where id="%s";' % _id)
+    def query_image(self, theme: str) -> list:
+        self.cursor.execute('select * from %s;' % self.target % theme)
         result = self.cursor.fetchall()
         return result
 
@@ -54,6 +55,8 @@ class SQLite(DatabaseSQL):
         super().__init__()
         self.conn = operator.connect('./src/db/data.sqlite')
         self.cursor = self.conn.cursor()
+        self.target = '"%s"'
+        print(self.target)
 
 
 class MySQL(DatabaseSQL):
@@ -71,3 +74,4 @@ class MySQL(DatabaseSQL):
                                      database=db
                                      )
         self.cursor = self.conn.cursor()
+        self.target = 'Counter.%s'
