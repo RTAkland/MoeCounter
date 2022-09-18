@@ -19,7 +19,7 @@ def split_(origin: str, type_: int = 0) -> dict:
     :param type_: 0 -> Mysql
     :return:
     """
-    origin = origin.split('|')[-1]
+    origin = origin.split('://')[-1]
     host = origin.split('@')[-1].split('/')[0].split(':')[0]
     port = origin.split('@')[-1].split('/')[0].split(':')[1]
     if type_ == 0:  # Mysql
@@ -45,8 +45,9 @@ if database == 'sqlite':
 else:
     import pymysql as operator
 
-    for k, v in zip(split_(origin=database, type_=0)):
-        os.environ[k] = v
+    result = split_(database)
+    for k, v in zip(result.keys(), result.values()):
+        os.environ[f"m_{k}"] = v
     from src.db.db import MySQL as Database
 
 __all__ = [Database, operator]
