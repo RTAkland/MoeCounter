@@ -11,10 +11,10 @@ from src.db import Database
 
 async def resp(_id: str, length: int = 7, theme: str = 'lewd') -> dict:
     """
-    return a response
-    :param _id:
-    :param length:
-    :param theme:
+    return a dict
+    :param _id: name
+    :param length:  length for counter
+    :param theme:  theme for counter
     :return:
     """
     times = Database().query(_id)[1]
@@ -23,19 +23,24 @@ async def resp(_id: str, length: int = 7, theme: str = 'lewd') -> dict:
     g_length = length * '0'  # 根据输入的位数来自动生成0的数量
     show_number = str(g_length[:-len_number] + str_number)
     context = []
-    w_h = Database().query_image(theme + '/0')[0]
-    count = 0  # 计数器, 每次遍历一次则加一, 让图片x轴相乘
-    for i in show_number:
-        data = Database().query_image(theme + '/' + i)[0]
-        context.append({'position': data[-2] * count,
-                        'width': data[-2],
-                        'height': data[-1],
-                        'base64': data[1]})
-        count += 1
     headers = {'cache-control': 'max-age=0, no-cache, no-store, must-revalidate',
                'Content-Type': 'image/svg+xml; charset=utf-8'}
+    data = Database().query_image(theme)
+    height = data[0][-1]
+    width = data[0][-2]
+    counter = 0
+    for i, n in zip(data, show_number):
+        context.append({
+            'position': i[-2] * counter,
+            'width': i[-2],
+            'height': i[-1],
+            'base64': data[int(n)][1]
+        })
+        counter += 1
 
-    return {'context': context,
-            'g_width': length * w_h[-2],
-            'g_height': w_h[-1],
-            'headers': headers}
+    return {
+        'context': context,
+        'g_width': length * width,
+        'g_height': height,
+        'headers': headers
+    }
