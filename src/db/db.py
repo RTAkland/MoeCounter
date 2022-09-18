@@ -56,7 +56,6 @@ class SQLite(DatabaseSQL):
         self.conn = operator.connect('./src/db/data.sqlite')
         self.cursor = self.conn.cursor()
         self.target = '"%s"'
-        print(self.target)
 
 
 class MySQL(DatabaseSQL):
