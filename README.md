@@ -2,17 +2,14 @@
 
 > 翻自 [journey-ad](https://github.com/journey-ad/Moe-counter) 的计数器
 
-# 预览
-
-<img src="https://counter-main.run.goorm.io/test" alt="preview">
-
 # 新特性
 
 * 使用了异步Web框架`FastAPI`来提高效率 ***注:数据库部分使用了同步***
 * 可以自定义显示图片的数量(长度)
 * 支持API接口以便自行开发
-* 支持MySQL数据库链接 ***程序内有默认的MySQL数据库请不要随意注水***
-> sql 文件下载地址 https://pac.rtst.tech/static_file_hosting/counter/sql/
+* 支持`Redis`数据库链接
+
+> 数据迁移脚本 [sql2Redis.py](src/scripts/sql2Redis.py) ***需要自行手动修改***
 
 # 失去的特性
 
@@ -30,11 +27,17 @@ $ python3 main.py  # 两条命令等价
 # 使用
 
 * 访问`http://127.0.0.1:8000/<any name you want>`
+
 > 示例: http://127.0.0.1:8000/_redirect?length=10&theme=moebooru
+
 ## 参数
+
 * `length`
+
 > length:  1 ≤ x ≤ 10
+
 * `theme`
+
 > theme: `blacked` `lewd` `lisu` `moebooru`
 
 # 单元测试
