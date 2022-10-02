@@ -10,11 +10,10 @@ import os
 from src.db import operator
 
 
-class DatabaseSQL:
+class Base:
     def __init__(self):
         self.conn = None
         self.cursor = None
-        self.target = None
 
     def __del__(self):
         self.conn.commit()
@@ -31,7 +30,7 @@ class DatabaseSQL:
         return result
 
     def insert(self, _id: str) -> bool:
-        self.cursor.execute('insert into data (id, times) values (%s, 1);' % self.target % _id)
+        self.cursor.execute('insert into data (id, times) values (%s, 1);' % _id)
         return True
 
     def update(self, _id: str, times: int) -> bool:
@@ -45,32 +44,71 @@ class DatabaseSQL:
         return result
 
     def query_image(self, theme: str) -> list:
-        self.cursor.execute('select * from %s;' % self.target % theme)
+        self.cursor.execute('select * from %s;' % theme)
         result = self.cursor.fetchall()
         return result
 
 
-class SQLite(DatabaseSQL):
+class SQLite(Base):
     def __init__(self):
         super().__init__()
         self.conn = operator.connect('./src/db/data.sqlite')
         self.cursor = self.conn.cursor()
-        self.target = '"%s"'
 
 
-class MySQL(DatabaseSQL):
+class Redis(Base):
     def __init__(self):
         super().__init__()
-        user = os.getenv('m_user')
-        pwd = os.getenv('m_password')
-        host = os.getenv('m_host')
-        port = int(os.getenv('m_port'))
-        db = os.getenv('m_database')
-        self.conn = operator.connect(host=host,
-                                     user=user,
-                                     password=pwd,
-                                     port=port,
-                                     database=db
-                                     )
-        self.cursor = self.conn.cursor()
-        self.target = 'Counter.%s'
+        self.host: str = os.getenv('c_host')
+        self.port: int = int(os.getenv('c_port'))
+        self.password: str = os.getenv('c_password')  # if is None then it is None. lol
+        self.conn = operator.Redis(host=self.host,
+                                   port=self.port,
+                                   password=self.password,
+                                   decode_responses=True)
+
+    def __del__(self):
+        self.conn.close()
+
+    def query(self, _id: str) -> tuple:
+        return self._get(_id)
+
+    def insert(self, _id: str) -> bool:
+        return self._set(_id)
+
+    def update(self, _id: str, times: int) -> bool:
+        return self._set(_id, times)
+
+    def query_all(self) -> list:
+        return self._get_all()
+
+    def query_image(self, theme: str) -> list:
+        return self._get_image(theme)
+
+    def _get(self, _id: str) -> tuple:
+        result = self.conn.get(_id)
+        if result is None:
+            self._set(_id)
+            return tuple([_id, 0])
+        self._set(_id, int(result))
+        return tuple([_id, int(result)])
+
+    def _set(self, _id: str, times: int = 0) -> bool:
+        times += 1
+        return self.conn.set(_id, times)
+
+    def _get_all(self) -> list:
+        results = self.conn.keys()
+        return results
+
+    def _get_image(self, theme: str) -> list:
+        images = []
+        for i in range(10):
+            images.append([i, self.conn.get(f'{theme}-{i}')])
+        width = int(self.conn.get(f'{theme}-width'))
+        height = int(self.conn.get(f'{theme}-height'))
+        for j in range(10):
+            images[j].append(width)
+            images[j].append(height)
+
+        return images
