@@ -38,7 +38,7 @@ $ python3 main.py  # 两条命令等价
 
 * `theme`
 
-> theme: `blacked` `lewd` `lisu` `moebooru`
+> theme: `blacked` `lewd` `lisu` `moebooru` `asoul`
 
 # 单元测试
 
