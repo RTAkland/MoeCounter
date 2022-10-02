@@ -5,22 +5,23 @@
 # @Create Time: 2022/9/11
 # @File Name: config.py
 
-
 import os
 
 
 class Config:
     """
-    database type. Default is sqlite
-    database file path is "./src/db/data.sqlite", it is not exists, before you run server first
-    remote sqlite file url is "https://pac.rtst.tech/static_file_hosting/static/counter/data.sqlite"
-    you can download it manually
-    if you want to use mysql then replace "mysql://[Username]:[password]@[host]:[port]/[database]" with "sqlite"
-    example: mysql://root:114514@127.0.0.1:3306/homo
+    Available database: sqlite3, Redis.
+    Redis: "redis://host:port@password".
+        If your database doesn't have password, just don't type "@password".
+        Don't type ":" to use default port.
     """
-    database = "mysql://counter:114514@111.173.80.154:26098/Counter"
-    # database = 'sqlite'
-    if 'sqlite' in database:
-        os.environ['counter_db_type'] = 'sqlite'
-    elif 'mysql' in database:
-        os.environ['counter_db_type'] = 'mysql'
+    database = "sqlite"  # Database type
+    if 'redis' in database:
+        os.environ['c_not_full'] = "True"  # Not full API supported.
+        os.environ['c_host'] = database.split('://')[-1].split(':')[0]
+        if ':' not in database.split('://'):
+            os.environ['c_port'] = '6379'
+        else:
+            os.environ['c_port'] = database.split('://')[-1].split('@')[0].split(':')[-1]
+        if '@' in database:
+            os.environ['c_password'] = database.split('://')[-1].split(':')[-1].split('@')[-1]
