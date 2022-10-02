@@ -6,9 +6,11 @@
 # @File Name: view.py
 
 
+import os
 from src.api import api
 from src.db import Database
 from fastapi.responses import FileResponse
+from fastapi.responses import JSONResponse
 
 
 @api.get('/query/{name}')
@@ -19,6 +21,8 @@ async def query(name: str):
 
 @api.get('/query-all/')
 async def query_all(limit: int = 30):
+    if os.getenv('c_not_full'):
+        return JSONResponse({'code': -200, 'msg': 'Redis Database do not support this action'})
     data = Database().query_all()[:limit]
     result = {}
     for i in data:
@@ -33,8 +37,5 @@ async def export():
 
 @api.get('/query-theme/{name}')
 async def query_theme(name: str):
-    themes = []
-    for i in range(10):
-        data = Database().query_image(name + '/' + str(i))[0]
-        themes.append(data)
-    return themes
+    data = Database().query_image(name)
+    return data
