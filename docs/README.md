@@ -29,6 +29,8 @@ $ curl -X GET 'http://127.0.0.1/api/query/test'
 $ curl -X GET 'http://127.0.0.1/api/query-all/'
 ```
 
+> 注: 如果使用`Redis`数据库则无法使用此API
+
 ### 返回数据
 
 ```json
@@ -53,7 +55,7 @@ $ curl -X GET 'http://127.0.0.1/api/query-theme/lewd'
 ```json
 [
   [
-    "lewd/0",
+    0,
     "base64...",
     45,
     100
