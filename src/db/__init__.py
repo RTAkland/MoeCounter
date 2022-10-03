@@ -16,7 +16,7 @@ if database == 'sqlite':
     from src.utils.t_download import download
 
     if not os.path.exists('./src/db/data.sqlite'):
-        download('https://markusjoe.github.io/static_file_hosting/static/counter/data.sqlite')
+        download('https://github.com/MarkusJoe/static_file_hosting/raw/main/static/counter/data.sqlite')
     from src.db.db import SQLite as Database
 elif 'redis' in database:
     import redis as operator
