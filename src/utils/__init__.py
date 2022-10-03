@@ -7,6 +7,5 @@
 
 
 from src.utils.response import resp
-from src.utils.t_download import download
 
-__all__ = [resp, download]
+__all__ = [resp]
