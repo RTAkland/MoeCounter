@@ -1,9 +1,11 @@
 # 这里是API接口的开发文档
 
 > 所有接口前缀都为`/api/`
-> 返回类型除了 `export` 都是JSON
+> 返回类型除了 `export` 都是RESTFul风格的api
 
 # 接口
+
+* 部分数据可能不同
 
 ## query
 
@@ -17,7 +19,12 @@ $ curl -X GET 'http://127.0.0.1/api/query/test'
 
 ```json
 {
-  "test": 0
+  "code": 200,
+  "time": 1668163249.493199,
+  "data": {
+    "name": "test",
+    "times": 26
+  }
 }
 ```
 
@@ -29,14 +36,18 @@ $ curl -X GET 'http://127.0.0.1/api/query/test'
 $ curl -X GET 'http://127.0.0.1/api/query-all/'
 ```
 
-> 注: 如果使用`Redis`数据库则无法使用此API
-
 ### 返回数据
 
 ```json
 {
-  "test": 114514,
-  "test1": 1919810
+  "code": 200,
+  "time": 1668163318.0312304,
+  "data": [
+    {
+      "name": "dasd",
+      "times": 26
+    }
+  ]
 }
 ```
 
@@ -52,16 +63,27 @@ $ curl -X GET 'http://127.0.0.1/api/query-theme/lewd'
 
 ### 返回数据
 
+* 省略了部分数据
+
 ```json
-[
-  [
-    0,
-    "base64...",
-    45,
-    100
-  ],
-  ...
-]
+{
+  "code": 200,
+  "time": 1668163380.9702282,
+  "data": [
+    {
+      "index": 0,
+      "image": "...",
+      "width": 68,
+      "height": 150
+    },
+    {
+      "index": 1,
+      "image": "...",
+      "width": 68,
+      "height": 150
+    }
+  ]
+}
 ```
 
 ### export
