@@ -13,7 +13,7 @@ from fastapi import FastAPI
 
 def create_app():
     """
-    Factory function
+    Create a app object
     :return:
     """
     app = FastAPI()
