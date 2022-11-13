@@ -48,7 +48,7 @@ class BaseSQL:
         return result
 
 
-class SQLite(Base):
+class SQLite(BaseSQL):
     def __init__(self):
         super().__init__()
         self.conn = operator.connect('./src/db/data.sqlite')
