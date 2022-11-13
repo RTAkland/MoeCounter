@@ -6,11 +6,10 @@
 # @File Name: db.py
 
 
-import os
 from src.db import operator
 
 
-class Base:
+class BaseSQL:
     def __init__(self):
         self.conn = None
         self.cursor = None
