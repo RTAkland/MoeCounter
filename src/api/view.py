@@ -5,8 +5,8 @@
 # @Create Time: 2022/9/2
 # @File Name: view.py
 
-import time
 
+import time
 from src.api import api
 from src.db import Database
 from fastapi.responses import FileResponse
