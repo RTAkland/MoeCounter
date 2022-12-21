@@ -32,8 +32,9 @@ async def index(req: Request, name: str, length: int = 7, theme: str = 'lewd'):
         return {'code': -200, 'msg': 'Length Error'}
     response = await resp(name, length, theme)
 
-    return template.TemplateResponse('index.html', context={'request': req,
-                                                            'context': response['context'],
-                                                            'g_width': response['g_width'],
-                                                            'g_height': response['g_height']},
+    return template.TemplateResponse('index.html',
+                                     context={'request': req,
+                                              'context': response['context'],
+                                              'g_width': response['g_width'],
+                                              'g_height': response['g_height']},
                                      headers=response['headers'])
