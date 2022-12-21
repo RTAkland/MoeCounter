@@ -6,10 +6,39 @@
 * 使用sqlite, 直接填写为`sqlite3` 即默认
 * 使用mysql, 需要按照以下格式填写: user:pwd@host:port/db
 
-> 所有接口前缀都为`/api/`
-> 返回类型除了 `export` 都是RESTFul风格的api
+# 安装 & 运行
+
+```bash
+$ pip3 install -r requirements.txt
+$ uvicorn src:create_app --factory  or 
+$ sh run.sh  or
+$ python3 main.py  # 两条命令等价
+```
+
+# 使用
+
+* 访问`http://127.0.0.1:8000/<any name you want>`
+
+> 示例: http://127.0.0.1:8000/_redirect?length=10&theme=moebooru
+
+## 参数
+
+* `length`
+
+> length:  1 ≤ x ≤ 10
+
+* `theme`
+
+> theme: `blacked` `lewd` `lisu` `moebooru` `asoul`
+
+# 单元测试
+
+* 没有单元测试(没写)
 
 # 接口
+
+> 所有接口前缀都为`/api/`
+> 返回类型除了 `export` 都是RESTFul风格的api
 
 * 部分数据可能不同
 

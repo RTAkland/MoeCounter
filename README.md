@@ -13,35 +13,6 @@
 
 * 暂未支持`MongoDB`
 
-# 安装&运行
-
-```bash
-$ pip3 install -r requirements.txt
-$ uvicorn src:create_app --factory  or 
-$ sh run.sh  or
-$ python3 main.py  # 两条命令等价
-```
-
-# 使用
-
-* 访问`http://127.0.0.1:8000/<any name you want>`
-
-> 示例: http://127.0.0.1:8000/_redirect?length=10&theme=moebooru
-
-## 参数
-
-* `length`
-
-> length:  1 ≤ x ≤ 10
-
-* `theme`
-
-> theme: `blacked` `lewd` `lisu` `moebooru` `asoul`
-
-# 单元测试
-
-* 没有单元测试(没写)
-
 # 开源
 
 - 本项目以[Apache-2.0](./LICENSE)许可开源, 即:
