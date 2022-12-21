@@ -7,17 +7,21 @@
 
 
 import os
-import sqlite3 as operator
 from urllib.request import urlretrieve
 from src.config import Config
-from src.db.db import SQLite as Database
 
-database = Config.database
+database = Config.database  # operator
 
-if not os.path.exists('./src/db/data.sqlite'):
+if not os.path.exists('./src/db/data.sqlite') and \
+        Config.database == 'sqlite3':
     print('Downloading database file. Please wait...')
     file_url = 'https://static.rtast.cn/data.sqlite'
-    urlretrieve(file_url, './src/db/data.sqlite')
+    urlretrieve(file_url, './src/db/data.sqlite')  # standard lib for downloading file
     print('Download database file successfully.')
 
-__all__ = [Database, operator]
+if Config.database == 'sqlite3':
+    from src.db.db import SQLite as Database
+
+else:
+    from src.db.db import MySQL as Database
+__all__ = [Database]

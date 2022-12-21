@@ -6,7 +6,12 @@
 # @File Name: db.py
 
 
-from src.db import operator
+from src.config import Config
+
+if Config.database == 'sqlite3':
+    import sqlite3 as operator
+else:
+    import pymysql as operator
 
 
 class BaseSQL:
@@ -29,7 +34,7 @@ class BaseSQL:
         return result
 
     def insert(self, _id: str) -> bool:
-        self.cursor.execute('insert into data (id, times) values (%s, 1);' % _id)
+        self.cursor.execute('insert into data (id, times) values ("%s", 1);' % _id)
         return True
 
     def update(self, _id: str, times: int) -> bool:
@@ -52,4 +57,22 @@ class SQLite(BaseSQL):
     def __init__(self):
         super().__init__()
         self.conn = operator.connect('./src/db/data.sqlite')
+        self.cursor = self.conn.cursor()
+
+
+class MySQL(BaseSQL):
+    def __init__(self):
+        super().__init__()
+        _CONFIG = Config.database.split('@')
+        user = _CONFIG[0].split(':')[0]
+        pwd = _CONFIG[0].split(':')[1]
+        host = _CONFIG[1].split(':')[0]
+        port = int(_CONFIG[1].split(':')[1].split('/')[0])
+        db = _CONFIG[1].split('/')[1]
+
+        self.conn = operator.connect(user=user,
+                                     passwd=pwd,
+                                     host=host,
+                                     port=port,
+                                     database=db)
         self.cursor = self.conn.cursor()
