@@ -8,6 +8,8 @@
 
 class Config:
     """
-    Available database: sqlite
+    Available database:  sqlite3, mysql
+    sqlite3 -> sqlite3   (default)
+    mysql -> user:pwd@host:port/db
     """
-    database = "sqlite"  # Database type
+    database = "sqlite3"  # Database type
