@@ -1,5 +1,11 @@
 # 这里是API接口的开发文档
 
+# config.py
+
+* 文件内的`Config`类的`database`属性数据库类型, 已经支持了 `SQLite` `MySQL`
+* 使用sqlite, 直接填写为`sqlite3` 即默认
+* 使用mysql, 需要按照以下格式填写: user:pwd@host:port/db
+
 > 所有接口前缀都为`/api/`
 > 返回类型除了 `export` 都是RESTFul风格的api
 
