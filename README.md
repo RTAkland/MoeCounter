@@ -1,4 +1,4 @@
-![Counter](https://count.rtast.cn/MoeCounter)
+![Counter](https://counters.deta.dev/MoeCounter)
 
 # py 版访问次数计数器
 
