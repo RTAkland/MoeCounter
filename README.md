@@ -1,3 +1,5 @@
+![Counter](https://count.rtast.cn/MoeCounter)
+
 # py 版访问次数计数器
 
 > 翻自 [journey-ad](https://github.com/journey-ad/Moe-counter) 的计数器
