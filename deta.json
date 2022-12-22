@@ -1,0 +1,13 @@
+{
+  "name": "MoeCounter",
+  "description": "一个Python版的MoeCounter重写， 并增加了一些功能",
+  "runtime": "python3.9",
+  "env": [
+    {
+      "key": "COUNTER_DB",
+      "description": "数据库类型, 默认是sqlite3, 也可以使用mysql, 格式: user:pwd@host:port/db",
+      "value": "sqlite3",
+      "required": true
+    }
+  ]
+}

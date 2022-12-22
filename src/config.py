@@ -4,6 +4,7 @@
 # @Development Tool: PyCharm
 # @Create Time: 2022/9/11
 # @File Name: config.py
+import os
 
 
 class Config:
@@ -12,4 +13,5 @@ class Config:
     sqlite3 -> sqlite3   (default)
     mysql -> user:pwd@host:port/db
     """
-    database = "sqlite3"  # Database type
+    database = os.getenv('COUNTER_DB') or "sqlite3"  # Database type
+    DETA = eval(os.getenv('DETA_RUNTIME').title())  # mark Deta

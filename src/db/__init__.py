@@ -12,12 +12,19 @@ from src.config import Config
 
 database = Config.database  # operator
 
-if not os.path.exists('./src/db/data.sqlite') and \
-        Config.database == 'sqlite3':
+
+def download_file(path: str):
     print('Downloading database file. Please wait...')
     file_url = 'https://static.rtast.cn/data.sqlite'
-    urlretrieve(file_url, './src/db/data.sqlite')  # standard lib for downloading file
+    urlretrieve(file_url, path)  # standard lib for downloading file
     print('Download database file successfully.')
+
+
+if Config.DETA and Config.database == 'sqlite3':
+    if not os.path.exists('/tmp/data.sqlite'):
+        download_file('/tmp/data.sqlite')
+elif not Config.DETA and Config.database == 'sqlite3':
+    download_file('./src/db/data.sqlite')
 
 if Config.database == 'sqlite3':
     from src.db.db import SQLite as Database

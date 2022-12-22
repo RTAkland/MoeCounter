@@ -13,6 +13,20 @@
 
 * 暂未支持`MongoDB`
 
+# 安装 & 运行
+
+```bash
+$ pip3 install -r requirements.txt
+$ uvicorn src:create_app --factory  or 
+$ sh run.sh  or
+$ python3 main.py  # 两条命令等价
+```
+
+# 部署到Deta
+
+* ***你需要提前准备一个Deta账号***
+* [![Deploy](https://button.deta.dev/1/svg)](https://go.deta.dev/deploy?repo=https://github.com/RTAkland/MoeCounter)
+
 # 开源
 
 - 本项目以[Apache-2.0](./LICENSE)许可开源, 即:

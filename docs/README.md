@@ -6,15 +6,6 @@
 * 使用sqlite, 直接填写为`sqlite3` 即默认
 * 使用mysql, 需要按照以下格式填写: user:pwd@host:port/db
 
-# 安装 & 运行
-
-```bash
-$ pip3 install -r requirements.txt
-$ uvicorn src:create_app --factory  or 
-$ sh run.sh  or
-$ python3 main.py  # 两条命令等价
-```
-
 # 使用
 
 * 访问`http://127.0.0.1:8000/<any name you want>`

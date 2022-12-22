@@ -56,7 +56,10 @@ class BaseSQL:
 class SQLite(BaseSQL):
     def __init__(self):
         super().__init__()
-        self.conn = operator.connect('./src/db/data.sqlite')
+        if Config.DETA:
+            self.conn = operator.connect('/tmp/data.sqlite')
+        else:
+            self.conn = operator.connect('./src/db/data.sqlite')
         self.cursor = self.conn.cursor()
 
 
