@@ -33,7 +33,7 @@ async def query(name: str):
     return response
 
 
-@api.get('/query/all')
+@api.get('/query/alldata')
 async def query_all(limit: int = 30):
     result = await Database().query_all()
     data = result[:limit]
