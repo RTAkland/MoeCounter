@@ -6,6 +6,7 @@
 # @File Name: view.py
 
 
+import os
 import time
 from src.api import api
 from src.db import Database
@@ -52,6 +53,8 @@ async def query_all(limit: int = 30):
 
 @api.get('/export')
 async def export():
+    if os.path.exists('/tmp/data.sqlite'):
+        return FileResponse('/tmp/data.sqlite')
     return FileResponse('./src/db/data.sqlite')
 
 
