@@ -19,21 +19,24 @@ async def _time():
 
 @api.get('/query/{name}')
 async def query(name: str):
-    data = Database().query(name)
+    data = await Database().query(name)
+    name = data[0]
+    times = data[1]
     response = {
         'code': 200,
         'time': await _time(),
         'data': {
-            'name': data[0],
-            'times': data[1]
+            'name': name,
+            'times': times
         }
     }
     return response
 
 
-@api.get('/query-all/')
+@api.get('/query/all')
 async def query_all(limit: int = 30):
-    data = Database().query_all()[:limit]
+    result = await Database().query_all()
+    data = result[:limit]
     response = {
         'code': 200,
         'time': await _time(),
@@ -47,14 +50,14 @@ async def query_all(limit: int = 30):
     return response
 
 
-@api.get('/export/')
+@api.get('/export')
 async def export():
     return FileResponse('./src/db/data.sqlite')
 
 
-@api.get('/query-theme/{name}')
+@api.get('/query/theme/{name}')
 async def query_theme(name: str):
-    data = Database().query_image(name)
+    data = await Database().query_image(name)
     response = {
         'code': 200,
         'time': await _time(),

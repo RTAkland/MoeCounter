@@ -14,4 +14,4 @@ class Config:
     mysql -> user:pwd@host:port/db
     """
     database = os.getenv('COUNTER_DB') or "sqlite3"  # Database type
-    DETA = eval(os.getenv('DETA_RUNTIME').title())  # mark Deta
+    DETA = False if not os.getenv('DETA_RUNTIME') else True  # mark deta

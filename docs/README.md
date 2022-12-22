@@ -54,12 +54,12 @@ $ curl -X GET 'http://127.0.0.1/api/query/test'
 }
 ```
 
-## query-all
+## query/all
 
 * 参数: 无
 
 ```bash
-$ curl -X GET 'http://127.0.0.1/api/query-all/'
+$ curl -X GET 'http://127.0.0.1/api/query/all'
 ```
 
 ### 返回数据
@@ -77,12 +77,12 @@ $ curl -X GET 'http://127.0.0.1/api/query-all/'
 }
 ```
 
-## query-theme
+## query/theme
 
 * 参数: `name`
 
 ```bash
-$ curl -X GET 'http://127.0.0.1/api/query-theme/lewd'
+$ curl -X GET 'http://127.0.0.1/api/query/theme/lewd'
 ```
 
 * ***注:返回的base64文本开头没有添加`data:image/gif;base64,`清手动添加***
@@ -117,7 +117,7 @@ $ curl -X GET 'http://127.0.0.1/api/query-theme/lewd'
 * 参数: 无
 
 ```bash
-$ curl -X GET 'http://127.0.0.1/api/export/'
+$ curl -X GET 'http://127.0.0.1/api/export'
 ```
 
 > 此接口返回文件
