@@ -5,8 +5,14 @@
   "env": [
     {
       "key": "COUNTER_DB",
-      "description": "数据库类型, 默认是sqlite3, 也可以使用mysql, 格式: user:pwd@host:port/db",
-      "value": "sqlite3",
+      "description": "数据库类型, 部署到Deta默认是deta, 手动部署是sqlite3, 也可以使用mysql, 格式: user:pwd@host:port/db",
+      "value": "deta",
+      "required": true
+    },
+    {
+      "key": "PJ_DETA",
+      "description": "如果你不知道这是什么请不要修改, 随意修改会导致程序无法运行",
+      "value": "c0pb0yjj_fRjtHCFgTaef1iCaSr8hBUm9pM9rrsYf",
       "required": true
     }
   ]
