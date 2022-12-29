@@ -2,9 +2,10 @@
 
 # config.py
 
-* 文件内的`Config`类的`database`属性数据库类型, 已经支持了 `SQLite` `MySQL`
+* 文件内的`Config`类的`database`属性数据库类型, 已经支持了 `SQLite` `MySQL` `Deta Base`
 * 使用sqlite, 直接填写为`sqlite3` 即默认
 * 使用mysql, 需要按照以下格式填写: user:pwd@host:port/db
+* 使用Deta Base 直接填写`deta`
 
 # 使用
 
@@ -20,7 +21,7 @@
 
 * `theme`
 
-> theme: `blacked` `lewd` `lisu` `moebooru` `asoul`
+> theme: `blacked` `lewd` `lisu` `moebooru` `asoul` `hmoebooru` `hgelbooru`
 
 # 单元测试
 
@@ -38,7 +39,7 @@
 * 参数: `name`
 
 ```bash
-$ curl -X GET 'http://127.0.0.1/api/query/test'
+$ curl -X GET 'http://127.0.0.1/api/query/times/test'
 ```
 
 ### 返回数据
@@ -59,7 +60,7 @@ $ curl -X GET 'http://127.0.0.1/api/query/test'
 * 参数: 无
 
 ```bash
-$ curl -X GET 'http://127.0.0.1/api/query/all'
+$ curl -X GET 'http://127.0.0.1/api/query/alldata'
 ```
 
 ### 返回数据
