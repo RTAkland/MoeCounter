@@ -1,5 +1,10 @@
-![Counter](https://counters.deta.dev/MoeCounter)
+<div style="text-align: center">
 
+Demo
+
+![Counter](https://count.rtast.cn/MoeCounter)
+
+</div>
 # py 版访问次数计数器
 
 > 翻自 [journey-ad](https://github.com/journey-ad/Moe-counter) 的计数器
@@ -25,6 +30,7 @@ $ python3 main.py  # 两条命令等价
 ```
 
 # 部署到Deta
+> 部署到Deta后将使用Deta的Base数据库
 
 * ***你需要提前准备一个Deta账号***
 * [![Deploy](https://button.deta.dev/1/svg)](https://go.deta.dev/deploy?repo=https://github.com/RTAkland/MoeCounter)
