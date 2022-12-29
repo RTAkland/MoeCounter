@@ -12,6 +12,8 @@ class Config:
     Available database:  sqlite3, mysql
     sqlite3 -> sqlite3   (default)
     mysql -> user:pwd@host:port/db
+    deta -> deta
     """
-    database = os.getenv('COUNTER_DB') or "root:123@gd.dgtmc.top:3306/"  # Database type
-    DETA = False if not os.getenv('DETA_RUNTIME') else True  # mark deta
+    database = os.getenv('COUNTER_DB') or "sqlite3"  # 数据库类型
+    if os.getenv("PJ_DETA") is not None:
+        database = "deta"  # 自动设置为deta
