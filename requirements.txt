@@ -1,7 +1,8 @@
-fastapi~=0.87.0
-uvicorn~=0.20.0
+fastapi
+uvicorn
 jinja2
 aiofiles
 requests~=2.28.1
-PyMySQL~=1.0.2
+PyMySQL
 cryptography
+deta
