@@ -18,7 +18,7 @@ async def _time():
     return time.time()
 
 
-@api.get('/query/{name}')
+@api.get('/query/times/{name}')
 async def query(name: str):
     data = await Database().query(name)
     name = data[0]
