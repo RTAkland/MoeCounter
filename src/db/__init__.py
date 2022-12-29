@@ -20,16 +20,14 @@ def download_file(path: str):
     print('Download database file successfully.')
 
 
-if Config.DETA and Config.database == 'sqlite3':
-    if not os.path.exists('/tmp/data.sqlite'):
-        download_file('/tmp/data.sqlite')
-elif not Config.DETA and Config.database == 'sqlite3':
+if database == 'sqlite3':
     if not os.path.exists('./src/db/data.sqlite'):
         download_file('./src/db/data.sqlite')
 
-if Config.database == 'sqlite3':
+if database == 'sqlite3':
     from src.db.db import SQLite as Database
-
+elif database == 'deta':
+    from src.db.db import DetaBase as Database
 else:
     from src.db.db import MySQL as Database
 __all__ = [Database]
