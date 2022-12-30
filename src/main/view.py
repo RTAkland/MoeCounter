@@ -13,28 +13,28 @@ from fastapi.responses import RedirectResponse
 from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 
-template = Jinja2Templates('./src/templates')
+template = Jinja2Templates("./src/templates")
 
 
-@main.get('/favicon.ico')
+@main.get("/favicon.ico")
 async def favicon():
-    return FileResponse('./src/static/favicon.ico')
+    return FileResponse("./src/static/favicon.ico")
 
 
-@main.get('/')
+@main.get("/")
 async def redirect_index():
-    return RedirectResponse('/_redirect')
+    return RedirectResponse("/_redirect")
 
 
-@main.get('/{name}')
-async def index(req: Request, name: str, length: int = 7, theme: str = 'lewd'):
+@main.get("/{name}")
+async def index(req: Request, name: str, length: int = 7, theme: str = "lewd"):
     if length > 10:
-        return {'code': -200, 'msg': 'Length Error'}
+        return {"code": -200, "msg": "Length Error"}
     response = await resp(name, length, theme)
 
-    return template.TemplateResponse('index.html',
-                                     context={'request': req,
-                                              'context': response['context'],
-                                              'g_width': response['g_width'],
-                                              'g_height': response['g_height']},
-                                     headers=response['headers'])
+    return template.TemplateResponse("index.html",
+                                     context={"request": req,
+                                              "context": response["context"],
+                                              "g_width": response["g_width"],
+                                              "g_height": response["g_height"]},
+                                     headers=response["headers"])

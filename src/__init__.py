@@ -18,5 +18,5 @@ def create_app():
     """
     app = FastAPI()
     app.include_router(main)
-    app.include_router(api, prefix='/api')
+    app.include_router(api, prefix="/api")
     return app

@@ -14,6 +14,6 @@ class Config:
     mysql -> user:pwd@host:port/db
     deta -> deta
     """
-    database = os.getenv('COUNTER_DB') or "sqlite3"  # 数据库类型
+    database = os.getenv("COUNTER_DB") or "sqlite3"  # 数据库类型
     if os.getenv("PJ_DETA") is not None:
         database = "deta"  # 自动设置为deta

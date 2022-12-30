@@ -14,19 +14,19 @@ database = Config.database  # operator
 
 
 def download_file(path: str):
-    print('Downloading database file. Please wait...')
-    file_url = 'https://static.rtast.cn/data.sqlite'
+    print("Downloading database file. Please wait...")
+    file_url = "https://static.rtast.cn/data.sqlite"
     urlretrieve(file_url, path)  # standard lib for downloading file
-    print('Download database file successfully.')
+    print("Download database file successfully.")
 
 
-if database == 'sqlite3':
-    if not os.path.exists('./src/db/data.sqlite'):
-        download_file('./src/db/data.sqlite')
+if database == "sqlite3":
+    if not os.path.exists("./src/db/data.sqlite"):
+        download_file("./src/db/data.sqlite")
 
-if database == 'sqlite3':
+if database == "sqlite3":
     from src.db.db import SQLite as Database
-elif database == 'deta':
+elif database == "deta":
     from src.db.db import DetaBase as Database
 else:
     from src.db.db import MySQL as Database
