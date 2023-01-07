@@ -5,6 +5,7 @@ Demo
 ![Counter](https://count.rtast.cn/MoeCounter)
 
 </div>
+
 # py 版访问次数计数器
 
 > 翻自 [journey-ad](https://github.com/journey-ad/Moe-counter) 的计数器
@@ -29,7 +30,12 @@ $ sh run.sh  or
 $ python3 main.py  # 两条命令等价
 ```
 
+# 部署到Vercel
+
+> 部署到Vercel之前请先 `fork` 本仓库, 修改 `.env` 文件内的PJ_DETA将其更换成你自己的 `Deta Project Key` 你也可以直接使用默认的
+
 # 部署到Deta
+
 > 部署到Deta后将使用Deta的Base数据库
 
 * ***你需要提前准备一个Deta账号***

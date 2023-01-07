@@ -15,5 +15,5 @@ class Config:
     deta -> deta
     """
     database = os.getenv("COUNTER_DB") or "sqlite3"  # 数据库类型
-    if os.getenv("PJ_DETA") is not None:
+    if os.getenv("PJ_DETA"):
         database = "deta"  # 自动设置为deta
