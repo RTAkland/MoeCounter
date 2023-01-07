@@ -9,9 +9,9 @@ import os
 
 class Config:
     """
-    Available database:  sqlite3, mysql
+    Available database:  sqlite3, mysql, detaBase
     sqlite3 -> sqlite3   (default)
-    mysql -> user:pwd@host:port/db
+    mysql -> mysql://user:pwd@host:port/db
     deta -> deta
     """
     database = os.getenv("COUNTER_DB") or "sqlite3"  # 数据库类型

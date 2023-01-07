@@ -9,15 +9,15 @@
 import os
 from src.config import Config
 
-if Config.database == 'sqlite3':
+if Config.database in ["sqlite3", "sqlite"]:
     import sqlite3 as operator
-elif Config.database == 'deta':
+elif Config.database == "deta":
     from deta import Deta
 else:
     import pymysql as operator
 
 
-class BaseSQL:
+class SQL:
     def __init__(self):
         self.conn = None
         self.cursor = None
@@ -56,17 +56,17 @@ class BaseSQL:
         return result
 
 
-class SQLite(BaseSQL):
+class SQLite(SQL):
     def __init__(self):
         super().__init__()
         self.conn = operator.connect('./src/db/data.sqlite')
         self.cursor = self.conn.cursor()
 
 
-class MySQL(BaseSQL):
+class MySQL(SQL):
     def __init__(self):
         super().__init__()
-        _CONFIG = Config.database.split('@')
+        _CONFIG = Config.database.replace("mysql://", "").split("@")
         user = _CONFIG[0].split(":")[0]
         pwd = _CONFIG[0].split(":")[1]
         host = _CONFIG[1].split(":")[0]
