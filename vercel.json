@@ -1,0 +1,4 @@
+{
+  "routes": [
+      { "src": "/", "dest": "src/__init__.py" }]
+}
