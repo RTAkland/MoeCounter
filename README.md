@@ -49,4 +49,4 @@ $ python3 main.py  # 两条命令等价
 
 ## 鸣谢
 
-* [JetBrains](https://www.jetbrains.com/zh-cn/) 提供强大的IDE支持
+* [JetBrains](https://www.jetbrains.com/zh-cn/) Open Source 项目提供IDE支持
