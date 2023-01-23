@@ -34,7 +34,7 @@
 
 * 部分数据可能不同
 
-## query
+## query/times
 
 * 参数: `name`
 
