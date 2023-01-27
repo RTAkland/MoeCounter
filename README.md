@@ -41,6 +41,20 @@ $ python3 main.py  # 两条命令等价
 * ***你需要提前准备一个Deta账号***
 * [![Deploy](https://button.deta.dev/1/svg)](https://go.deta.dev/deploy?repo=https://github.com/RTAkland/MoeCounter)
 
+# 部署到Doprax
+
+> 你需要提前注册账号, 点击[这里](https://www.doprax.com/signup/)快速前往
+
+1. 将此仓库[fork](https://github.com/RTAkland/MoeCounter/fork)
+2. 进入`dashboard`点击`New App`, 随便起一个名字
+3. 创建完成后点击你刚才创建的App的名字进入后点击左侧的`Deploy`, 点击绿色的按钮等待部署完成
+4. 点击亮起的绿色连接, 就能正常使用了
+5. 自定义域名: 点击`Settings`, 点击`Add Domain`
+6. 输入你的域名, 可以选择下方的 `Also add www version`也可以不选, 完成后点击 `submit domain`
+7. 在你注册域名的地方将下方提供的记录添加, 添加完成后点击`verify`即可使用域名访问
+
+> ***如果不添加`www`子域， 可能在访问的时候提示`不安全`, 在添加域名的时候勾选添加`www`子域, 使用`www`子域访问就不会有不安全提示了***
+
 # 开源
 
 - 本项目以[Apache-2.0](./LICENSE)许可开源, 即:
