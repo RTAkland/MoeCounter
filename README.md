@@ -2,7 +2,7 @@
 
 Demo
 
-![Counter](https://count.rtast.cn/MoeCounter)
+![Counter](https://count.rtast.cn/_redirect)
 
 </div>
 
