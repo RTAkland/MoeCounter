@@ -15,7 +15,6 @@ Demo
 * 使用了异步Web框架`FastAPI`来提高效率, 所有代码均为异步操作
 * 可以自定义显示图片的数量(长度)
 * 支持API接口以便自行开发
-* 支持了`MySQL`数据库
 
 # 失去的特性
 
@@ -32,28 +31,7 @@ $ python3 main.py  # 两条命令等价
 
 # 部署到Vercel
 
-> 部署到Vercel之前请先 `fork` 本仓库, 修改 `.env` 文件内的PJ_DETA将其更换成你自己的 `Deta Project Key` 你也可以直接使用默认的
-
-# 部署到Deta
-
-> 部署到Deta后将使用Deta的Base数据库
-
-* ***你需要提前准备一个Deta账号***
-* [![Deploy](https://button.deta.dev/1/svg)](https://go.deta.dev/deploy?repo=https://github.com/RTAkland/MoeCounter)
-
-# 部署到Doprax
-
-> 你需要提前注册账号, 点击[这里](https://www.doprax.com/signup/)快速前往
-
-1. 将此仓库[fork](https://github.com/RTAkland/MoeCounter/fork)
-2. 进入`dashboard`点击`New App`, 随便起一个名字
-3. 创建完成后点击你刚才创建的App的名字进入后点击左侧的`Deploy`, 点击绿色的按钮等待部署完成
-4. 点击亮起的绿色连接, 就能正常使用了
-5. 自定义域名: 点击`Settings`, 点击`Add Domain`
-6. 输入你的域名, 可以选择下方的 `Also add www version`也可以不选, 完成后点击 `submit domain`
-7. 在你注册域名的地方将下方提供的记录添加, 添加完成后点击`verify`即可使用域名访问
-
-> ***如果不添加`www`子域， 可能在访问的时候提示`不安全`, 在添加域名的时候勾选添加`www`子域, 使用`www`子域访问就不会有不安全提示了***
+> 部署到Vercel之前请先 `fork` 本仓库, 修改 `.env`
 
 # 开源
 
