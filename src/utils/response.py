@@ -28,15 +28,15 @@ async def resp(_id: str, length: int = 7, theme: str = "lewd") -> dict:
     headers = {"cache-control": "max-age=0, no-cache, no-store, must-revalidate",
                "Content-Type": "image/svg+xml; charset=utf-8"}
     data = await Database().query_image(theme)
-    height = data[0][-1]
-    width = data[0][-2]
+    height = data[0]["height"]
+    width = data[0]["width"]
     counter = 0
     for i, n in zip(data, show_number):
         context.append({
-            "position": i[-2] * counter,
-            "width": i[-2],
-            "height": i[-1],
-            "base64": data[int(n)][1]
+            "position": i["width"] * counter,
+            "width": i["width"],
+            "height": i["height"],
+            "base64": data[int(n)]["base64"]
         })
         counter += 1
 

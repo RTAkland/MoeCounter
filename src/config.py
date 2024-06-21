@@ -14,6 +14,7 @@ class Config:
     mysql -> mysql://user:pwd@host:port/db
     deta -> deta
     """
-    database = os.getenv("COUNTER_DB") or "sqlite3"  # 数据库类型
-    if os.getenv("PJ_DETA"):
-        database = "deta"  # 自动设置为deta
+    database = os.getenv("COUNTER_DB") or "vercelkv"  # 数据库类型
+    api_key = os.getenv("VERCEL_KV_KEY") or "<KEY>"
+    vercel_kv_url = os.getenv("VERCEL_KV_URL") or "http://127.0.0.1:8000"
+    themes = {}

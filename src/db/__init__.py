@@ -8,6 +8,9 @@
 
 import os
 from urllib.request import urlretrieve
+
+import requests
+
 from src.config import Config
 
 database = Config.database  # operator
@@ -26,8 +29,22 @@ if database == "sqlite3":
 
 if database == "sqlite3":
     from src.db.db import SQLite as Database
-elif database == "deta":
-    from src.db.db import DetaBase as Database
 else:
-    from src.db.db import MySQL as Database
+    from src.db.db import VercelKV as Database
+
+    base_url = "https://static.rtast.cn/static/counter"
+    themes_file = [
+        "lisu.json",
+        "moebooru.json",
+        "asoul.json",
+        "blacked.json",
+        "hgelbooru.json",
+        "lewd.json",
+        "rule34.json",
+        "hmoebooru.json"
+    ]
+    for i in themes_file:
+        result = requests.get(base_url + f"/{i}").json()
+        print(f"{i}, Done!")
+        Config.themes[i.replace(".json", "")] = result
 __all__ = [Database]

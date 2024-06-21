@@ -68,9 +68,9 @@ async def query_theme(name: str):
     }
     for i in data:
         response["data"].append({
-            "index": i[0],
-            "image": i[1],
-            "width": i[2],
-            "height": i[3]
+            "index": i["id"],
+            "image": i["base64"],
+            "width": i["width"],
+            "height": i["height"]
         })
     return JSONResponse(response)
