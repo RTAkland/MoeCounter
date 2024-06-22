@@ -2,7 +2,7 @@
 
 Demo
 
-![Counter](https://count.rtast.cn/_redirect)
+![Counter](https://counter.rtast.cn/RTAkland)
 
 </div>
 
