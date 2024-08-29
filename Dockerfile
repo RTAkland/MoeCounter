@@ -1,6 +1,13 @@
-FROM ubuntu:latest
-EXPOSE 8000
-WORKDIR .
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
-RUN apt-get -y update && apt-get -y install python3-pip && pip3 install -r requirements.txt
-CMD ["uvicorn", "src:create_app", "--host=0.0.0.0", "--port=8000"]
+
+EXPOSE 8000
+
+CMD ["uvicorn", "src:create_app", "--host", "0.0.0.0", "--port", "8000"]
